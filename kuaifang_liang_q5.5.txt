@@ -1,0 +1,221 @@
+(base) appledeMacBook-Pro:~ apple$ sqlite3
+SQLite version 3.31.1 2020-01-27 19:55:54
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> .open /Users/apple/sakila.db 
+sqlite> .tables
+actor             film              payment_p2007_01  rental          
+address           film_actor        payment_p2007_02  script          
+category          film_category     payment_p2007_03  staff           
+city              inventory         payment_p2007_04  store           
+country           language          payment_p2007_05
+customer          payment           payment_p2007_06
+sqlite> .mode column
+sqlite> SELECT actor.first_name ||(" ")|| actor.last_name as actor_name, COUNT(*) as num
+   ...> FROM actor, film_actor
+   ...> WHERE actor.actor_id = film_actor.actor_id
+   ...> GROUP BY actor_name
+   ...> HAVING num>1
+   ...> ORDER BY actor_name
+   ...> ;
+ADAM GRANT  18        
+ADAM HOPPE  22        
+AL GARLAND  26        
+ALAN DREYF  27        
+ALBERT JOH  33        
+ALBERT NOL  31        
+ALEC WAYNE  29        
+ANGELA HUD  34        
+ANGELA WIT  35        
+ANGELINA A  31        
+ANNE CRONY  27        
+AUDREY BAI  27        
+AUDREY OLI  25        
+BELA WALKE  30        
+BEN HARRIS  23        
+BEN WILLIS  33        
+BETTE NICH  20        
+BOB FAWCET  25        
+BURT DUKAK  29        
+BURT POSEY  24        
+BURT TEMPL  23        
+CAMERON ST  24        
+CAMERON WR  19        
+CAMERON ZE  33        
+CARMEN HUN  26        
+CARY MCCON  24        
+CATE HARRI  28        
+CATE MCQUE  30        
+CHARLIZE D  24        
+CHRIS BRID  27        
+CHRIS DEPP  20        
+CHRISTIAN   32        
+CHRISTIAN   22        
+CHRISTIAN   25        
+CHRISTOPHE  20        
+CHRISTOPHE  21        
+CUBA ALLEN  25        
+CUBA BIRCH  24        
+CUBA OLIVI  28        
+DAN HARRIS  28        
+DAN STREEP  24        
+DAN TORN    22        
+DARYL CRAW  30        
+DARYL WAHL  31        
+DEBBIE AKR  24        
+DUSTIN TAU  27        
+ED CHASE    22        
+ED GUINESS  29        
+ED MANSFIE  32        
+ELLEN PRES  25        
+ELVIS MARX  26        
+EMILY DEE   14        
+EWAN GOODI  33        
+FAY KILMER  20        
+FAY WINSLE  31        
+FAY WOOD    22        
+FRANCES DA  26        
+FRANCES TO  23        
+FRED COSTN  27        
+GARY PENN   26        
+GARY PHOEN  25        
+GENE HOPKI  22        
+GENE MCKEL  27        
+GENE WILLI  23        
+GEOFFREY H  26        
+GINA DEGEN  42        
+GOLDIE BRO  28        
+GRACE MOST  30        
+GREG CHAPL  27        
+GREGORY GO  30        
+GRETA KEIT  27        
+GRETA MALD  32        
+GROUCHO DU  35        
+GROUCHO SI  26        
+GROUCHO WI  25        
+HARRISON B  28        
+HARVEY HOP  32        
+HELEN VOIG  32        
+HENRY BERR  35        
+HUMPHREY G  29        
+HUMPHREY W  26        
+IAN TANDY   31        
+JADA RYDER  31        
+JAMES PITT  31        
+JANE JACKM  25        
+JAYNE NEES  29        
+JAYNE NOLT  34        
+JAYNE SILV  27        
+JEFF SILVE  25        
+JENNIFER D  22        
+JESSICA BA  23        
+JIM MOSTEL  26        
+JODIE DEGE  29        
+JOE SWANK   25        
+JOHN SUVAR  29        
+JOHNNY CAG  29        
+JOHNNY LOL  29        
+JON CHASE   29        
+JUDE CRUIS  30        
+JUDY DEAN   15        
+JULIA BARR  24        
+JULIA FAWC  15        
+JULIA MCQU  33        
+JULIA ZELL  16        
+JULIANNE D  32        
+KARL BERRY  31        
+KENNETH HO  29        
+KENNETH PA  21        
+KENNETH PE  20        
+KENNETH TO  33        
+KEVIN BLOO  21        
+KEVIN GARL  33        
+KIM ALLEN   28        
+KIRK JOVOV  26        
+KIRSTEN AK  34        
+KIRSTEN PA  27        
+LAURA BROD  26        
+LAURENCE B  26        
+LISA MONRO  23        
+LIZA BERGM  25        
+LUCILLE DE  24        
+LUCILLE TR  30        
+MAE HOFFMA  28        
+MARY KEITE  40        
+MARY TANDY  31        
+MATTHEW CA  39        
+MATTHEW JO  20        
+MATTHEW LE  30        
+MEG HAWKE   27        
+MENA HOPPE  24        
+MENA TEMPL  30        
+MERYL ALLE  22        
+MERYL GIBS  28        
+MICHAEL BE  24        
+MICHAEL BO  30        
+MICHELLE M  23        
+MILLA KEIT  28        
+MILLA PECK  24        
+MINNIE KIL  20        
+MINNIE ZEL  31        
+MORGAN HOP  27        
+MORGAN MCD  25        
+MORGAN WIL  27        
+NATALIE HO  32        
+NICK DEGEN  22        
+NICK STALL  30        
+NICK WAHLB  25        
+OLYMPIA PF  28        
+OPRAH KILM  25        
+PARKER GOL  24        
+PENELOPE C  31        
+PENELOPE G  19        
+PENELOPE M  27        
+PENELOPE P  25        
+RALPH CRUZ  28        
+RAY JOHANS  30        
+REESE KILM  32        
+REESE WEST  33        
+RENEE BALL  33        
+RENEE TRAC  33        
+RICHARD PE  30        
+RIP CRAWFO  33        
+RIP WINSLE  30        
+RITA REYNO  20        
+RIVER DEAN  31        
+ROCK DUKAK  30        
+RUSSELL BA  25        
+RUSSELL CL  19        
+RUSSELL TE  31        
+SALMA NOLT  25        
+SANDRA KIL  37        
+SANDRA PEC  19        
+SCARLETT B  26        
+SCARLETT D  36        
+SEAN GUINE  33        
+SEAN WILLI  26        
+SIDNEY CRO  34        
+SISSY SOBI  18        
+SPENCER DE  24        
+SPENCER PE  21        
+SUSAN DAVI  54        
+SYLVESTER   22        
+THORA TEMP  20        
+TIM HACKMA  23        
+TOM MCKELL  25        
+TOM MIRAND  27        
+UMA WOOD    35        
+VAL BOLGER  35        
+VIVIEN BAS  35        
+VIVIEN BER  30        
+WALTER TOR  41        
+WARREN JAC  32        
+WARREN NOL  34        
+WHOOPI HUR  32        
+WILL WILSO  31        
+WILLIAM HA  27        
+WOODY HOFF  31        
+WOODY JOLI  31        
+ZERO CAGE   25        
+sqlite> 

@@ -1,0 +1,38 @@
+(base) appledeMacBook-Pro:~ apple$ sqlite3
+SQLite version 3.31.1 2020-01-27 19:55:54
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> .open /Users/apple/sakila.db 
+sqlite> .tables
+actor             film              payment_p2007_01  rental          
+address           film_actor        payment_p2007_02  script          
+category          film_category     payment_p2007_03  staff           
+city              inventory         payment_p2007_04  store           
+country           language          payment_p2007_05
+customer          payment           payment_p2007_06
+sqlite> .mode column
+sqlite> SELECT category.name, COUNT(*) AS num
+   ...> FROM film_category ,category
+   ...> WHERE film_category.category_id = category.category_id
+   ...> GROUP BY category.name
+   ...> HAVING num>=50
+   ...> ORDER BY category.name
+   ...> ;
+Action      64        
+Animation   66        
+Children    60        
+Classics    57        
+Comedy      58        
+Documentar  68        
+Drama       62        
+Family      69        
+Foreign     73        
+Games       61        
+Horror      56        
+Music       51        
+New         63        
+Sci-Fi      61        
+Sports      74        
+Travel      57        
+sqlite> 

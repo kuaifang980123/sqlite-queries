@@ -1,0 +1,18 @@
+(base) appledeMacBook-Pro:~ apple$ sqlite3
+SQLite version 3.31.1 2020-01-27 19:55:54
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> .open /Users/apple/sakila.db 
+sqlite> .tables
+actor             film              payment_p2007_01  rental          
+address           film_actor        payment_p2007_02  script          
+category          film_category     payment_p2007_03  staff           
+city              inventory         payment_p2007_04  store           
+country           language          payment_p2007_05
+customer          payment           payment_p2007_06
+sqlite> SELECT COUNT(*) as num
+   ...> FROM(SELECT rental.customer_id FROM rental, inventory, category, film_category WHERE category.name = "Comedy" AND rental.inventory_id = inventory.inventory_id  AND inventory.film_id = film_category.film_id AND film_category.category_id = category.category_id GROUP BY customer_id INTERSECT SELECT customer_id FROM customer WHERE customer.active=0)
+   ...> ;
+12
+sqlite> 
